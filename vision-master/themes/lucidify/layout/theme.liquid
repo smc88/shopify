@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-GB">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>{% if page.title %}{{page_title}} | {% endif %}{{shop.name}}</title>
+
+	{{ 'textile.css'  | global_asset_url | stylesheet_tag }}
+	{{ 'lightbox/v204/lightbox.css'      | global_asset_url | stylesheet_tag }}
+	{{ 'shop.css'     | asset_url        | stylesheet_tag }}
+
+	{{ 'prototype/1.6/prototype.js'           | global_asset_url  | script_tag }}
+	{{ 'scriptaculous/1.8.2/scriptaculous.js' | global_asset_url  | script_tag }}
+	{{ 'lightbox/v204/lightbox.js' | global_asset_url  | script_tag }}	
+	{{ 'shop.js'                   | asset_url         | script_tag }}
+	{{ 'option_selection.js'       | shopify_asset_url | script_tag }}
+
+	{{ content_for_header }}
+</head>
+<body>
+
+	<div id="header">
+		<div class="pad">
+			<h1><a href="/" title="Homepage of {{ shop.name }}">{{shop.name}}</a></h1>
+		</div>
+	</div>
+	<div id="colmask">
+		<div id="colmid">
+			<div id="colright">
+				<div id="col1wrap">
+					<div id="col1pad">
+						<div class="pad">
+							<div id="col1">
+								{{ content_for_layout }}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="col2">
+					<div class="pad">
+						<ul class="nav">
+							{% for link in linklists.main-menu.links %}
+							<li>{{ link.title | escape | link_to: link.url }}</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+				<div id="col3">
+					<div class="pad">
+						<div id="in-cart">
+							Cart 
+							{% if cart.item_count == 0 %}
+							(0)
+							{% else %}
+							(<a  href="/cart" title="View Cart">{{ cart.item_count }} {{cart.item_count | pluralize: 'item', 'items'}}</a>)
+							{% endif %}
+						</div>
+
+						<form action="/search" method="get">
+							<label for="q">Search:</label>
+							<input type="text" id="q" name="q" class="searchfield" />
+							<input type="submit" value="Search" />
+						</form>
+
+						<h2>Featured Products</h2>
+						{% for product in collections.frontpage.products %}
+						<div id="product.id">
+							<h3><a href="{{product.url}}" title="View {{product.title}}">{{product.title}}</a></h3>
+							<a href="{{product.url}}" title="View {{product.title}}">{{ product.featured_image | product_img_url: 'small' | img_tag }}</a>
+							<p class="money">{{product.price_min | money}}</p>
+						</div>
+						{% endfor %}
+
+						{% if tags %}
+						<h3>Tags</h3>
+						<ul class="vlink-list">
+							{% for tag in collection.tags %} 
+							<li>{{ tag | highlight_active_tag | link_to_tag: tag }}</li>
+							{% endfor %}
+						</ul>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<div id="foot_links">
+			<div class="pad">
+				<ul class="horizontal">
+					{% for link in linklists.footer.links %}
+					<li{% if forloop.index == 1 %} class="first"{% endif %}>{{ link.title | link_to: link.url }}</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+
+		<div id="credits">
+			<div class="pad">
+				<ul class="horizontal">
+					<li class="first">Lucidify—an open-source "blank" <a href="http://www.shopify.com/?ref=lucid-design" title="Shopify">Shopify</a> theme by <a href="http://luciddesign.co.nz" title="graphic design | web development | advertising">Lucid Design</a></li>
+					<li>Content and images &copy;{{ 'now' | date: "%Y" }} {{ shop.name }}. All rights reserved.</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

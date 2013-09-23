@@ -1,0 +1,94 @@
+/*
+Theme Name: SPOTIFY THEMES
+Theme URI: N/A
+Author: Shan Chikonka
+*/
+/* $CSS Reset & Clearfix */
+
+
+/*==================
+	IMPORTS
+ ==================*/	
+/*===[LIBS]===*/
+		@import "foundation";
+		@import "typography";
+	/*===[LAYOUT]===*/
+	/*===[PARTIALS | MODULES]===*/
+	
+	/*===[MIXINS]===*/
+
+	/*===[PAGES]===*/
+	
+/*==================
+	GLOBAL STYLE
+ ==================*/	
+ 	/*===[BODY]===*/
+		html, body {
+		  font-family: 'open_sansregular',Helvetica,Arial,sans-serif;
+		  font-size: 13px;
+		  color:rgb(133, 133, 133);
+		}
+	
+	/*===[CONTAINER]===*/
+		.row {
+			width: 100%;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 0;
+			margin-bottom: 0;
+			max-width: 960px;
+		}
+	/*===[LAYOUT]===*/
+	#welcome,#new_products,#featured_products{
+		text-align: center;
+		h1{
+			color:#000;
+		}
+	}
+	#new_products,#featured_products{
+		h2{
+			text-align: left;
+			color:#000;
+		}
+		img{
+			margin-bottom: 20px;
+		}
+	}
+
+	/*==[Header]==*/	
+	header{
+		border:1px solid #ccc;
+	}
+	/*==[footer]==*/
+	footer{
+		border:1px solid #ccc;
+	}
+	#footer-right{
+		ul#sm-icons{
+			li{
+				float:left;
+			}
+		}
+	}
+
+
+	/*==[TOP HEADER - LOGO]==*/
+		.top-bar{
+			background: none;
+		}
+
+	/*==[NAVIGATION]==*/
+	.top-bar{
+		ul.right{
+			li{
+				a{
+					color:#000;
+				}
+			}
+		}
+	}
+	
+/*====CONTENT====*/
+.content-wrapper{
+	border-top:1px solid #ccc;
+}

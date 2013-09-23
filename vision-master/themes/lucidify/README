@@ -1,0 +1,11 @@
+by Galen King (http://luciddesign.co.nz)
+
+Lucidify is intended to be a clean-slate starting platform for building a Shopify site. I've found it's too hard to strip out all the bits and pieces of the packaged themes if you really want to begin with something fresh and go in a completely different direction.
+
+TO DO
+* Finish CSS
+* Add CSS reset code
+* Finish simplifying templates and layout
+* Get feedback from interested users/contributors
+
+Full credit due to Matthew James Taylor for his 3-column CSS layout: http://matthewjamestaylor.com/blog/holy-grail-liquid-layout-no-quirks-mode

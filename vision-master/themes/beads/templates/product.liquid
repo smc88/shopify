@@ -1,0 +1,51 @@
+<article id="{{product.handle}}" class="product hentry">
+  <div id="product_images" class="span6">
+  <!-- The first image pulled form the product is a large image (480x480), subsequent images are "compact" which is 160x160 -->
+    {% for image in product.images %}
+      {% if forloop.first %}
+        <a href="{{ image | product_img_url: 'grande' }}" rel="colorbox" title="{{product.title}}">
+          <img src="{{ image | product_img_url: 'large'}}" alt="Picture of {{product.title}}" />
+        </a>
+      {% else %}
+        <a href="{{ image | product_img_url: 'grande' }}" rel="colorbox" title="{product.title}}">
+          <img src="{{ image | product_img_url: 'compact'}}" alt="Picture of {{product.title}}" />
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <header class="span6">
+    <h1 class="entry-title">{{ product.title }}</h1>
+  </header>
+  <section class="entry-content span6">
+    <h1 hidden>Product Description</h1>
+        {{ product.description }}
+    <form id="add_to_basket" action="/cart/add" method="post">
+      {% if product.available %}
+        {% if product.variants.size > 1 %}
+          <select id="variant-select" name="id" class="product-info-options">
+            {% for variant in product.variants %}
+              {% if variant.available == true %}
+                <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        {% else %}
+          {% for variant in product.variants %}
+            {% if variant.available %}
+              <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+
+      <h2 id="price">{{ product.price_min | money }}{% if product.price_varies %} - {{ product.price_max | money }}{% endif %}</h2>
+      {% if product.available %}
+        <input class="btn btn-success" type="submit" name="add" value="Add to Cart" />
+      {% else %}
+        <p>Sorry, currently out of stock :( Check back again soon!</p>
+      {% endif %}
+    </form>
+    
+  </section>
+</article>

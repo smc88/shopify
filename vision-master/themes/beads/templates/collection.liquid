@@ -1,0 +1,58 @@
+{% paginate collection.products by 12 %}
+
+  <section id="{{collection.handle}}" class="collection">
+    <header>
+      <h1 class="page-header">{{collection.title}}</h1>
+      {{collection.description}}
+    </header>
+    <div id="pagination" class="pagination">
+      {{ paginate | default_pagination }}
+    </div>
+    <ol class="thumbnails">
+      {% for product in collection.products %}
+        <li class="span4">
+          <div class="thumbnail">
+            <a href="{{product.url}}">
+              <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.description | strip_html | truncate: 75 }} click for more information" />
+            </a>
+            
+          <div class="caption">
+            <h5>{{ product.title }}</h5>
+            <p>{{ product.description }}</p>
+            <p>
+              <form class="roaming-addtocart" action="/cart/add" method="post">
+                {% if product.available %}
+                  {% if product.variants.size > 1 %}
+                    <select id="variant-select" name="id" class="product-info-options">
+                      {% for variant in product.variants %}
+                        {% if variant.available == true %}
+                          <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                        {% endif %}
+                      {% endfor %}
+                    </select>
+                  {% else %}
+                    {% for variant in product.variants %}
+                      {% if variant.available %}
+                        <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
+                {% endif %}
+                {% if product.available %}
+                  <input class="btn btn-success" type="submit" name="add" value="Add to Cart" />
+                {% else %}
+                  <p>Sorry, currently out of stock :( Check back again soon!</p>
+                {% endif %}
+                <span class="price">{{ product.price_min | money }}{% if product.price_varies %} - {{ product.price_max | money }}{% endif %}</span>
+              </form>
+            </p>
+          </div>
+        </li>
+      {% endfor %}	
+    </ol>
+    <div id="pagination" class="pagination">
+      {{ paginate | default_pagination }}
+    </div>
+  </section>
+
+{% endpaginate %}

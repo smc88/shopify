@@ -1,0 +1,75 @@
+{% if cart.item_count == 0 %}
+	<h1>Your basket is empty, <a href="/collections/all">Continue Shopping!</a></h1>
+{% else %}
+
+	<script type="text/javascript">
+		function remove_item(id) {
+			document.getElementById('updates_'+id).value = 0;
+			document.getElementById('cartform').submit();
+		}
+	</script>
+
+	<form action="/cart" method="post" id="cartform">
+		<table class="table table-striped" summary="list of all the products in your basket" border="0" cellspacing="0" cellpadding="0">
+			<thead>
+				<tr class="odd">
+					<th>Image</th>
+					<th>Product Title</th>
+					<th>Price</th>
+					<th>Qty</th>
+					<th>Total</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for item in cart.items %}
+					<tr class="{% cycle 'even', 'odd' %}">
+						<td>
+							<a class="cart_thumb" href="{{item.product.url}}" title="View {{item.title}} Page">
+								<img src="{{item.product.featured_image | product_img_url: 'medium' }}" alt="{{item.title | escape }}" />
+							</a>
+						</td>
+						<td>
+							<a href="{{item.product.url}}" title="View {{item.title | escape }}">{{ item.title | truncate: 30 }}
+						</td>
+						<td>
+							{{ item.price | money }}
+						</td>
+						<td>
+							<input class="number span1" type="text" size="2" name="updates[{{item.variant.id}}]" id="updates_{{item.variant.id}}" value="{{item.quantity}}" />
+						</td>
+						<td>
+							{{item.line_price | money }}
+						</td>
+						<td>
+							<a class="btn btn-danger" title="remove {{item.title}} from your basket" href="#" onclick="remove_item({{ item.variant.id }}); return false;"><i class="icon-remove icon-white"></i></a>
+						</td>
+					</tr>
+				{% endfor %}
+				<tr class="last">
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>
+						
+					</td>
+					<td>
+						{{ cart.total_price | money }}
+					</td>
+					<td></td>
+				</tr>
+				</tbody>			
+		</table>		
+		<div class="row">
+		  <div class="span6">
+		    <a class="btn btn-primary" href="/collections/all"><i class="icon-chevron-left icon-white"></i> Continue Shopping</a>
+		  </div>
+		  <div class="span6">
+		    <input id="update_quantities" type="submit" value="Update Subtotal" title="Changed any numbers? update your cart!" name="update" class="update btn" />
+		    <input id="cart_submit" class="btn btn-success" type="submit" value="Place your order" name="checkout" />
+		  </div>
+		</div>
+	</form>
+{% endif %}
+
+<script type="text/javascript" src="//apis.google.com/js/plusone.js"></script>

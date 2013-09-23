@@ -1,0 +1,28 @@
+<h2 id="page-title">{{blog.title}}</h2>
+
+{% paginate blog.articles by 20 %}
+
+{% for article in blog.articles  %}
+
+<h3 class="blog"><a href="{{article.url}}" title="{{ article.title }}">{{ article.title }}</a></h3>
+{% if blog.comments_enabled? %}
+{% if article.comments.size > 0 %}
+<p>
+	<a href="{{article.url}}#comments" title="View comments for {{ article.title }}">{{ article.comments.size }} {{ article.comments.size | pluralize: 'comment', 'comments'}}</a>
+</p>
+{% endif %}  
+{% endif %}  
+<div class="article-body-truncated textile">
+	{{ article.content | truncatewords: 25 }} [<a href="{{ article.url }}" title="{{ article.title }}">Details</a>]
+</div>    
+
+{% endfor %}
+
+
+{% if paginate.pages > 1 %}
+<div id="pagination" class="info" style="margin-top: 20px">
+	{{ paginate | default_pagination }}
+</div>
+{% endif %}
+
+{% endpaginate %}

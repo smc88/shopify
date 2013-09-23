@@ -1,0 +1,116 @@
+footer{
+	width: 100%;
+	margin-top: 20px;
+	text-align: center;
+	padding: 20px 0 0 0;
+	float: left;
+	border-top: 1px solid #F5F5F5;
+
+
+	#footer_links{
+		#customer_care{
+			margin-left: -50px;
+			text-align: left;
+			ul{
+				margin:10px;
+				padding-bottom: 20px;
+				float: left;
+				text-align: left;
+				li.item{
+					a{
+						font-size: 11px;
+						color: #ccc;
+
+					}
+				}
+			}
+		}
+		#icons{
+			margin-left: -50px;
+			li{
+				margin:10px;
+				i{
+					color: #ccc;
+					font-size: 25px;
+				}
+			}
+		}
+	}
+
+	.newsletter{
+		text-align: left;
+		margin:10px;
+		float: left;
+
+		#subscribe{
+			margin-left:-10px;
+		}
+
+		input,.input-group{
+			border: 1px solid #f2f2f2;
+			border-radius: 0;
+			box-shadow: none;
+				.btn{
+						background: #f2f2f2;
+						border: 1px solid #f2f2f2;
+						border-radius: 0;
+						color: #ccc;
+				}
+		}
+
+		h6{
+			text-align: left;
+			margin-bottom: 10px;
+			font-family: 'Open Sans', sans-serif;
+			font-weight: 500;
+		} 
+		form{
+			
+			.wrap{
+				display: inline-block;
+				vertical-align: middle;
+				zoom: 1;
+				width: 100%;
+				padding-right: 65px;
+				margin: 0 auto;
+				position: relative;
+				margin-bottom: 10px;
+				
+							.email{
+								padding: 8px 0 8px 8px;
+								width: 100%;
+								background: transparent;
+								font-size: 12px;
+								font-family: 'Open Sans', sans-serif;
+								color: #bbbbbb;
+								height:34px;
+							}
+							
+							.submit{
+								position: absolute;
+								top: -1px;
+								right: -1px;
+								bottom: -1px;
+								width: 65px;
+								color: #fff;
+								height:35px;
+								background: #479ccf;
+								border: 1px solid #3793cb;
+								text-shadow: 0 1px 0 #3188bc;
+								-webkit-appearance: none;
+								font-size: 10px;
+								letter-spacing: 0.1em;
+								color: #ffffff;
+								text-transform: uppercase;
+								text-align: center;
+								-webkit-border-radius: 0px;
+								-moz-border-radius: 0px;
+								-ms-border-radius: 0px;
+								-o-border-radius: 0px;
+								border-radius: 0px;
+							}
+					
+			}
+		}
+	}
+}

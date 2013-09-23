@@ -1,0 +1,97 @@
+header{
+	background: #fff;
+	width: 100%;
+	float: left;
+	
+		.navbar-inverse{
+			background: #fff;
+				a.logo{
+					font-family: "droidserif-regular-webfont", georgia, serif;
+					float:left;
+					font-size:50px;
+					color: #000;
+						&:hover{
+							color: #888;
+						}
+				}
+		}
+		
+		//NAV COLLAPSE
+
+		.nav-collapse{
+			border-top: 1px solid #eee;
+			border-bottom: 1px solid#eee;
+			width: 100%;
+			float: left;
+			margin: 20px 0;
+			
+
+			.navbar-nav{
+				li{
+					a{	
+						font-family: "droidserif-regular-webfont", georgia, serif;
+						font-size: 11px;
+						color: #9B9B9B;
+						text-transform: uppercase;
+							&:hover{
+								background: none;
+								color:#000;
+							}
+							&:active{
+								background: none;
+							}
+					}
+				}
+			}
+			form.search{
+				padding:5px;
+					.btn{
+						background: #f2f2f2;
+						border: 1px solid #f2f2f2;
+						border-radius: 0;
+						i.icon-search{
+							color:#ccc;
+						}
+					}
+
+					.input-group .form-control{
+						border:1px solid #f2f2f2;
+						border-radius: 0;
+						box-shadow: none;
+						input{
+							border-radius: 0;
+						}
+					}
+
+			}
+		}
+		
+		//CART MODULE
+		#cart_block{
+			float: right;
+
+			#block_cart_collapse{
+				float: left;
+				margin:10px;
+			}
+			#btn_cart{
+				float:left;
+					h4{
+						float:left;
+						margin:6px 0;
+						.ajax_cart_title{
+							text-transform: uppercase;
+							font-size: 10px;
+							color: #000;
+						}
+					}
+					a#my-account{
+						float: left;
+						margin: 10px;
+						font-size: 10px;
+						color: #000;
+						text-transform: uppercase;
+					}
+			}
+		}
+}

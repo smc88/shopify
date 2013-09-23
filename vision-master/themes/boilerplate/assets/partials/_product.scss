@@ -1,0 +1,33 @@
+
+
+//product_images
+.prod_images{
+	padding-top: 20px;
+}
+
+.thumbnail{
+	margin-top: 10px;	
+}
+
+.other_selections{
+	.col-lg-3{
+		width: 15%;
+	}
+}
+
+//Product options
+#product_options{
+	margin:50px 0;
+	padding:10px 0;
+	border-top:1px solid #eee;
+	border-bottom: 1px solid #eee;
+	.color, .size, .quantity, .add_to_cart{
+		padding:10px 0;
+	}
+	.quantity{
+		input{
+			width: 8%;
+		}
+	}
+}
+

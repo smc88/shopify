@@ -1,0 +1,33 @@
+{% paginate search.results by 10 %}
+	<section id="search_results" class="collection span12">
+		<header>
+			<h1>Search Results</h1>
+		</header>
+		{% if search.results_count > 10 %}
+			<div id="pagination" class="pagination">
+				{{ paginate | default_pagination }}
+			</div>
+		{% endif %}
+		{% if search.results_count > 0 %}
+		<ol>
+			{% for item in search.results %}
+				<li class="{% if item.featured_image %}product{% else %}page{% endif %}">
+					<a href="{{item.url}}">
+						<h2>{{item.title}}</h2>
+						{% if item.featured_image %}
+							<img src="{{ item.featured_image | product_img_url: 'medium'}}" alt="{{ item.description | strip_html | truncate: 75 }} click for more information" />
+						{% endif %}
+					</a>
+				</li>
+			{% endfor %}	
+		</ol>
+		{% else %}
+			<h2>No Results</h2>
+		{% endif %}
+		{% if search.results_count > 10 %}
+			<div id="pagination" class="pagination">
+				{{ paginate | default_pagination }}
+			</div>
+		{% endif %}
+	</section>
+{% endpaginate %}

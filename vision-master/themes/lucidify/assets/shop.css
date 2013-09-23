@@ -1,0 +1,266 @@
+/* @override http://localhost:3232/files/shops/random_number/assets/shop.css */
+
+/* @group CSS Reset */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+	font-weight: normal;
+	font-style: normal;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* @end */
+
+/* @group Typography */
+
+body {
+	font: 12px "Lucida Grande", Lucida, Verdana, sans-serif;
+}
+
+p, li {
+	line-height: 150%;
+}
+
+a:link, a:visited {
+	color: #333;
+}
+
+a:hover {
+	color: #000;
+}
+
+strong, b {
+	font-weight: bold;
+}
+
+em, i {
+	font-style: italic;
+}
+
+h1, h2, h3 {
+	font: 350% Georgia, "Times New Roman", Times, serif;
+
+}
+
+h1 a, h2 a, h3 a {
+	text-decoration: none;
+}
+
+h1 {
+	margin-bottom: 25px;
+}
+
+h2 {
+	font-size: 150%;
+	margin-top: 25px;
+	margin-bottom: 10px;
+}
+
+h3 {
+	font-size: 150%;
+	margin-top: 25px;
+	margin-bottom: 10px;
+}
+
+h4 {
+	font-size: 110%;
+}
+
+/* @end */
+
+/* @group Layout */
+
+ul.nav a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+ul.nav li {
+	margin-bottom: 10px;
+}
+
+/* Use .horizontal for ul and ol lists */
+
+.horizontal {
+	clear: both;
+}
+
+.horizontal li {
+	float: left;
+	display: inline;
+	padding-left: 10px;
+	margin-left: 10px;
+	border-left: 1px solid #ccc;
+}
+
+.horizontal li.first {
+	border-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.pad {
+	padding: 20px;
+}
+
+/* @group 3-Columns */
+
+body {
+	margin:0;
+	padding:0;
+	width:100%;
+	min-width:760px;
+}
+
+#header {
+	float:left;
+	width:100%;
+	padding:0;
+	margin:0;
+	background-color: #fff;
+	/* change this to change the background of the header */
+}
+
+#colmask {
+	position:relative;	/* This fixes the IE7 overflow hidden bug and stops the layout jumping out of place */
+	clear:both;
+	float:left;
+	width:100%;			/* width of whole page */
+	overflow:hidden;
+	/* Set the background colour of the left column here */
+	background-color: #fff;
+	/* change this to change the colour of the left column */
+}
+#colmid {
+	float:left;
+	width:200%;
+	position:relative;
+	left:200px;
+	background-color: #fff;
+	/* change the colour of the middle */
+}
+#colright {
+	float:left;
+	width:100%;
+	position:relative;
+	left:50%;
+	margin-left:-400px;
+	background-color: #fff;
+	/* change the colour of the right column */
+}
+#col1wrap {
+	float:right;
+	width:50%;
+	position:relative;
+	right:100%;
+}
+#col1pad {
+	overflow:hidden;
+	margin-left: 400px;
+}
+#col1 {
+	width:100%;
+	overflow:hidden;
+}
+#col2 {
+	float:left;
+	width:200px;
+	position:relative;
+	margin-left:-50%;
+	left:200px;
+	overflow:hidden;
+}
+#col3 {
+	float:left;
+	width:200px;
+	position:relative;
+	left:0px;
+	overflow:hidden;
+}
+#footer {
+	clear:both;
+	float:left;
+	width:100%;
+	padding:0;
+	margin:0;
+	background-color: #fff;
+}
+
+/* @end */
+
+
+
+/* @end */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

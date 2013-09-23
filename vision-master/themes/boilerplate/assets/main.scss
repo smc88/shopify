@@ -1,0 +1,49 @@
+/*
+Theme Name: SPOTIFY THEMES
+Theme URI: N/A
+Author: Shan Chikonka
+*/
+/* $CSS Reset & Clearfix */
+
+
+/*==================
+	IMPORTS
+ ==================*/	
+/*===[LIBS]===*/
+		
+		@import "bourbon/bourbon";
+ 		@import "fontawesome/font-awesome";
+ 		@import "base/flexslider";
+	/*===[LAYOUT]===*/
+		@import "layouts/header";
+		@import "layouts/footer";
+	/*===[PAGES]===*/
+		//@import "partials/shop";
+		@import "partials/blog";
+		@import "partials/about";
+		@import "partials/contact";
+		@import "partials/cart";
+		//@import "partials/article";
+		@import "partials/product";
+		@import "partials/search";
+		@import "partials/collections";
+	/*===[BASE]===*/
+   	 	//@import "base/flexslider";
+   	 	@import "base/glyphs";
+		@import "base/typography";
+		@import "base/mediaqueries";
+		//@import "base/GGS";
+	/*===[PARTIALS | MODULES]===*/
+		@import "layouts/header";
+		@import "layouts/footer";
+		@import "base/carousel";
+	/*===[MIXINS]===*/
+	
+
+//OVERITES
+
+/*==================
+	GLOBAL STYLE
+ ==================*/	
+
+

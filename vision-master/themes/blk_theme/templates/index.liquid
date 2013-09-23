@@ -1,0 +1,50 @@
+<div id="index" class="clearfix">
+
+  {% if settings.homepage_banner == "slider" or settings.homepage_banner == "slideshow" %}
+  <div class="slider-container">
+    {% if settings.homepage_banner == "slider" %}
+    <div id="content-scroll" class="scroll">
+      <div id="content-slide">
+        {% for product in collections[settings.slider_collection].products %}
+        {% 'product-slide' with settings.slider_collection %}
+        {% endfor %}
+      </div><!-- /#latest-products -->
+    </div>
+    <div class="slider">
+      <span class="ui-slider-handle">&nbsp;</span>
+    </div>
+    {% elsif settings.homepage_banner == "slideshow" %}
+    {% assign number_of_slides = 7 %}
+    <ul id="slider">
+      {% for i in (1..number_of_slides) %}
+      {% capture slide_enabled %}slideshow_{{ i }}_active{% endcapture %}
+      {% capture slide_image %}slideshow_{{ i }}.jpg{% endcapture %}
+      {% capture slide_image_alt %}slideshow_{{ i }}_alt{% endcapture %}
+      {% capture slide_link %}image_{{ i }}_link{% endcapture %}
+      {% if settings[slide_enabled] %}
+      <li class="slide"><img src="{{ slide_image | asset_url }}" data-url="{{ settings[slide_link] }}" alt="{{ settings[slide_image_alt] }}" class="slide-img" /></li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+    <div id="slider-empty" style="display:none; padding:120px 0; text-align:center;">
+      <h4>Slider is empty</h4>
+      If you are the shop owner, <a href="/admin/themes/current/settings">click here</a> to upload images to this slideshow.
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% if settings.frontpage_collection != "" and settings.frontpage_collection == collections[settings.frontpage_collection].handle and collections[settings.frontpage_collection].all_products_count > 0 %}
+  <div class="more-info">
+    <span class="upper">Featured</span>
+    <span class="lower">{% if collections[settings.frontpage_collection].all_products_count < 8 %}{{ collections[settings.frontpage_collection].all_products_count }}{% else %}8{% endif %} {{ collections[settings.frontpage_collection].all_products_count | pluralize: 'Item', 'Items' }}</span>
+  </div>
+
+  <div id="content-table" class="clearfix">
+    {% for product in collections[settings.frontpage_collection].products limit:8 %}
+    {% 'product-loop' with settings.frontpage_collection %}
+    {% endfor %}
+  </div>
+  {% endif %}
+
+</div> <!-- /#index -->

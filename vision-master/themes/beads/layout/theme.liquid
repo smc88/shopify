@@ -1,0 +1,232 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>
+  {{shop.name}}
+    {% if template != "index" %} | {% endif %} 
+    {% if template == "page" %}
+      {{page.title}}
+    {% elsif template == "blog" %}
+      {{blog.title}}
+    {% elsif template == "article" %}
+      {{article.title}}
+    {% elsif template == "product" %}
+      {{product.title}}
+    {% elsif template == "collection" %}
+      {{collection.title}}	
+    {% endif %}
+  </title>
+  
+  <!-- If we're on a product page or a blog post, output the first 160 characters of it's description / article -->
+  {% if template == "product" %}
+    <meta name="description" content="{{ product.description | strip_html | truncate: 150 }}" />
+  {% elsif template == "article" %}
+    <meta name="description" content="{{ article.content | strip_html | truncate: 150 }}" />
+  {% else %}
+    <meta name="description" content="{{ settings.meta_description }}">
+  {% endif %}
+  
+  <!-- If product page, output that products tags as the META tags, otherwise use normal ones -->
+  {% if template == "product" %}
+    <meta name="keywords" content="{% for tag in product.tags %}{{tag}}, {% endfor %}" />
+  {% else %}
+    <meta name="keywords" content="{{ settings.meta_keywords }}">
+  {% endif %}
+
+  <!-- Mobile viewport optimized: h5bp.com/viewport -->
+  <meta name="viewport" content="width=device-width">
+
+  <!--Favicons-->
+  <!--As we don't have access to the root directory (mathiasbynens.be/notes/touch-icons) we need to specify icons-->
+  <!-- For iPhone 4 with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/apple-touch-icon-114x114-precomposed.png">
+  <!-- For first-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/apple-touch-icon-72x72-precomposed.png">
+  <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="assets/apple-touch-icon-precomposed.png">
+
+  {{ 'style.css' | asset_url | stylesheet_tag }}
+  {{ 'colorbox.css' | asset_url | stylesheet_tag }}
+  
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except this Modernizr build.
+  Modernizr enables HTML5 elements & feature detects for optimal performance.
+  Create your own custom Modernizr build: www.modernizr.com/download/ -->
+  {{ 'modernizr-2.5.3.min.js' | asset_url | script_tag }}
+  
+  <!--RSS feeds-->
+  <!--You can have multiple blogs using Shopify, for which you will need multiple feeds. The default name for your first blog is "news" if you
+  change the name in Shopify, make sure it's changed here-->
+  <link rel="alternate" type="application/rss+xml" title="BLOG FEED TITLE" href="http://jairas-beads.myshopify.com/blogs/news.atom" />
+  <!--Ensure a Shopify Smart Collection has been created called 'all' which contains all products (also used for the auto complete function)-->
+  <link rel="alternate" type="application/rss+xml" title="PRODUCT FEED TITLE" href="http://jairas-beads.myshopify.com/collections/all.atom" />
+  
+  <!--Site Map-->
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+  
+  {{ content_for_header }}
+  
+</head>
+
+<body>
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6. 
+  chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  <div id="topbar">
+    <div class="container">
+      <div class="row"><!-- MIGHT NOT NEED ALL OF THESE DIVS -->
+        <div class="span6"><!-- Left -->
+          
+        </div>
+        <div classs="span6 nav"><!-- Right -->
+          <ul>
+            <li>
+              <a href="/cart" title="Checkout">Checkout</a>
+            </li>
+            <li>
+              <a href="/cart" class="cart" title="Shopping Cart"><i class="icon-shopping-cart"></i> Cart ({{ cart.item_count }})</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header id="logo" class="container">
+    <h1><a href="/">Beads and Bangles by Jaira</a></h1>
+  </header>
+  
+  <div class="container">
+    <div id="nav-wrap" class="row">
+      <div id="nav" class="">
+        <ul id="menu">
+          {% for link in linklists.main-menu.links %}
+          <li {% if link.active %}class="active"{% endif %} >{{ link.title || link_to: link.url }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    
+    <div id="main" role="main" class="row">
+      {{ content_for_layout }}
+    </div>
+  
+  </div> <!-- .container -->
+  
+  <footer>
+    <div class="container">
+
+        <div class="row">
+          <div class="span3">
+            <div id="search">
+              <h3>Search</h3>
+              <img src="http://placehold.it/180x30" />
+            </div>
+            <div id="social">
+              <h3>Facebook</h3>
+              <img src="http://placehold.it/180x100" />
+            </div>
+          </div>
+        
+          <div class="span3">
+            <ul class="more-info">
+              <h3 class="page-title">More Info</h3>
+              {% for link in linklists.footer.links %}
+                <li {% if link.object.tags and link.object.tags.size > 0 %} class="children"{% endif %}>
+                  <a href="{{link.url}}">{{link.title}}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        
+          <div class="span6">
+            <div id="mailinglist">
+              <h3>Join Our Mailinglist</h3>
+              <img src="http://placehold.it/180x30" />
+            </div>
+        
+            <div id="about">
+              <h3>About Us</h3>
+              <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+            </div>
+          </div>
+        
+        </div><!-- .row -->
+    </div><!-- .container -->
+  </footer>
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <!-- <script type="text/javascript">window.jQuery || document.write('{{ 'jquery-1.7.1.min.js' | asset_url | script_tag }}');</script> -->
+
+  <!-- scripts  -->
+  
+  <!-- Bootstrap JS -->
+  {{ 'bootstrap.min.js' | asset_url | script_tag }}
+  {{ 'bootstrap-carousel.js' | asset_url | script_tag }}
+  
+  <!--Bring in the autocomplete code from http://docs.jquery.com/Plugins/autocomplete-->
+  {{ 'jquery.autocomplete.min.js' | asset_url | script_tag }}
+  
+  <!--Bring in Colorbox, modal window for Jquery, for more info see http://jacklmoore.com/colorbox/-->
+  {{ 'jquery.colorbox-min.js' | asset_url | script_tag }}
+
+  <!--Bring in Flexslider, responsive slider / carousel for Jquery, for more info see http://flex.madebymufffin.com/-->
+  {{ 'jquery.flexslider-min.js' | asset_url | script_tag }}
+  
+  {{ 'plugins.js' | asset_url | script_tag }}
+  
+  <!--Create the data array for the autocomplete code-->
+  <!--Why don't we put this in a separate file? because we can't use the 'paginate' liquid function in an exterior autocompletearray.js file-->
+  <script type="text/javascript">
+    var data = [
+      {% for tag in collections.all.tags %}
+        {text:"{{ tag | escape }}", url:"{{ shop.url }}/collections/all/{{ tag | escape }}"},
+      {% endfor %}
+      {% paginate collections.all.products by 1000 %}
+        {% for product in collections.all.products %}
+          {text:"{{ product.title | escape }}", url:"{{ shop.url }}/products/{{ product.handle }}"},
+        {% endfor %}
+      {% endpaginate %}
+      {% if current_page > 1 %}
+        {% for product in collections.all.products %}
+          {text:"{{ product.title | escape }}", url:"{{ shop.url }}/products/{{ product.handle }}"},
+        {% endfor %}
+      {% endif %}
+      {text:"", url:""}
+     ];
+    
+  jQuery(function() {
+  $("#search_text").autocomplete(data, {
+    matchContains: true,
+    scroll: false,
+    highlight: false,
+    minChars: 2,
+    selectFirst: false,
+    cacheLength:1,
+    formatItem: function(item) {
+      return item.text;
+    }
+  }).result(function(event, item) {
+    location.href = item.url;
+  });
+    });
+
+  </script>
+  
+  <!-- scripts concatenated and minified via build script -->
+  {{ 'plugins.js' | asset_url | script_tag }}
+  {{ 'script.js' | asset_url | script_tag }}
+  <!-- end scripts -->
+  
+</body>
+</html>

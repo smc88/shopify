@@ -1,0 +1,254 @@
+
+
+/*==============	
+  SCREEN SIZES
+================*/
+/*===[For All Responsive Areas]===*/
+
+		/*===[Flexible Images]===*/
+			img {
+				max-width: 100%;
+				height: auto;
+				width: auto\9; /* ie8 */
+			}
+		/*===[Flexible Embedded Videos]===*/
+			.video embed,
+			.video object,
+			.video iframe {
+				width: 100%;
+				height: auto;
+			}
+
+/*===[Specific Mobile Devices]===*/
+
+		/*===[DESKTOP]===*/
+			
+			@media only screen and (min-width: 1366px) {	
+				/*===Header===*/
+				
+				/*===Navigation===*/
+				
+				/*===Sections===*/
+				
+				/*===Footer===*/
+				
+			}
+			
+
+		/*===[TABLET]===*/
+			/*--iPad in portrait & landscape--*/
+
+			@media only screen and (min-device-width : 768px) and (max-device-width : 1024px){
+				
+				/*===Header===*/
+					header, #header{
+
+						/*===Navigation===*/
+
+					}
+				
+				
+				/*===Sections===*/
+					#hero{
+						h2.main-title{}
+						.entry-content{
+							p{
+
+							}
+						}
+					}
+					#services{
+						h2.main-title{}
+						.entry-content{
+							p{
+
+							}
+						}
+					}
+					#about{
+						h2.main-title{}
+						.entry-content{
+							p{
+
+							}
+						}
+					}
+					#staff{
+						h2.main-title{}
+						.entry-content{
+							p{
+
+							}
+						}
+					}
+					#contact{
+						h2.main-title{}
+						.entry-content{
+							p{
+
+							}
+						}
+					}
+					#faqs{
+						h2.main-title{}
+						.entry-content{
+							p{
+
+							}
+						}
+					}
+
+				/*===Footer===*/
+
+				/*===Misc===*/
+					#welcome_title{
+
+					}
+					
+				
+			}
+			@media only screen and (min-width: 768px) and (max-width: 1024px) {
+				/*===Header===*/
+					header, #header{
+
+						/*===Navigation===*/
+
+					}
+				
+				
+				/*===Sections===*/
+					#hero{
+						h2.main-title{}
+						.entry-content{
+							p{
+
+							}
+						}
+					}
+					#services{
+						h2.main-title{}
+						.entry-content{
+							p{
+
+							}
+						}
+					}
+					#about{
+						h2.main-title{}
+						.entry-content{
+							p{
+
+							}
+						}
+					}
+					#staff{
+						h2.main-title{}
+						.entry-content{
+							p{
+
+							}
+						}
+					}
+					#contact{
+						h2.main-title{}
+						.entry-content{
+							p{
+
+							}
+						}
+					}
+					#faqs{
+						h2.main-title{}
+						.entry-content{
+							p{
+
+							}
+						}
+					}
+
+				/*===Footer===*/
+
+				/*===Misc===*/
+					#welcome_title{}
+			}
+
+		/*===[PHONE]===*/
+			@media only screen and (min-width : 320px) and (max-width : 480px) 
+			and (orientation : landscape) {
+				
+
+				/*===Header===*/
+					header, #header{
+
+						/*===Navigation===*/
+
+					}
+				
+				
+				/*===Sections===*/
+					#hero{
+						h2.main-title{}
+						.entry-content{
+							width:60%;
+							p{
+								#welcome_title{
+									font-size: 18px;
+								}
+							}
+						}
+					}
+					#services{
+						h2.main-title{}
+						.entry-content{
+							p{
+
+							}
+						}
+					}
+					#about{
+						h2.main-title{}
+						.entry-content{
+							p{
+
+							}
+						}
+					}
+					#staff{
+						h2.main-title{}
+						.entry-content{
+							width:100%;
+							padding:0;
+							h2{
+								font-size: 16px;
+							}
+							p{
+
+							}
+						}
+					}
+					#contact{
+						h2.main-title{}
+						.entry-content{
+							p{
+
+							}
+						}
+					}
+					#faqs{
+						h2.main-title{}
+						.entry-content{
+							p{
+
+							}
+						}
+					}
+
+				/*===Footer===*/
+
+				/*===Misc===*/
+					#welcome_title{
+						font-size: 18px;
+					}
+				
+
+			}

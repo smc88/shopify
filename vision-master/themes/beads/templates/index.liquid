@@ -1,0 +1,91 @@
+{% assign article = pages.frontpage %}
+<article id="{{page.handle}}" class="post hentry">
+  <div class="row">
+    <section id="myCarousel" class="carousel slide span12">
+      <!-- Carousel items -->
+      <div class="carousel-inner">
+        <div class="item active carousel-welcome">
+          <img src="http://placehold.it/1000x450" />
+          <div class="carousel-caption">
+            <h2>Welcome to {{ shop.name }}!</h2>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+          </div>
+        </div>
+        {% for product in collections.frontpage.products %}
+        <div class="item">
+      		<a href="{{ product.url }}" title="{{ product.title }}"><img src="{{ product.featured_image | product_img_url: 'original' }}" />
+      		  <div class="carousel-caption">
+      		    <h2>{{ product.title }}</h2>
+      		    <p>{{ product.description }}</p>
+      		  </div>
+      		</a>
+        </div>
+        {% endfor %}
+      </div>
+      <!-- Carousel nav -->
+      <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </section>
+  </div>
+  
+  <div class="row">
+  <section id="featured" class="span12">
+    <header><h2 class="page-header">Featured Products</h2></header>
+    <ul class="thumbnails">
+      {% for product in collections.featured.products %}
+        <li class="span4">
+          <div class="thumbnail">
+            <a href="{{ product.url }}" title="{{ product.title }}">
+              <img src="{{ product.featured_image | product_img_url: 'large' }}" />
+            </a>
+            
+            <div class="caption">
+              <h5>{{ product.title }}</h5>
+              <p>{{ product.description }}</p>
+              <p>
+                <form class="roaming-addtocart" action="/cart/add" method="post">
+                  {% if product.available %}
+                    {% if product.variants.size > 1 %}
+                      <select id="variant-select" name="id" class="product-info-options">
+                        {% for variant in product.variants %}
+                          {% if variant.available == true %}
+                            <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                          {% endif %}
+                        {% endfor %}
+                      </select>
+                    {% else %}
+                      {% for variant in product.variants %}
+                        {% if variant.available %}
+                          <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                        {% endif %}
+                      {% endfor %}
+                    {% endif %}
+                  {% endif %}
+                  {% if product.available %}
+                    <input class="btn btn-success" type="submit" name="add" value="Add to Cart" />
+                  {% else %}
+                    <p>Sorry, currently out of stock :( Check back again soon!</p>
+                  {% endif %}
+                  <span class="price">{{ product.price_min | money }}{% if product.price_varies %} - {{ product.price_max | money }}{% endif %}</span>
+                </form>
+              </p>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </section><!-- #featured-products -->
+  </div>
+  
+<!--  
+  <header>
+    <h1 class="entry-title">{{ article.title }}</h1>
+    <p class="byline author vcard">Posted by <span class="fn" rel="author">{{article.author}}</span> on <time class="updated" datetime="{{ article.published_at | date: "%Y-%m-%dT%H:%M:%S%Z" }}" pubdate>{{ article.published_at | date: "%A, %B %d" }}</time></p>
+  </header>
+  <section class="entry-content" id="article_content">
+    <h1 hidden>Article content</h1>
+    {{ article.content }}
+  </section>
+-->
+
+</article>

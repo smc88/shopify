@@ -1,0 +1,98 @@
+
+.articles{
+
+//META  
+	.meta{
+		padding-right:6%;
+		margin-bottom: 30px;
+
+		.title{
+			display: none;
+		}
+		.date{
+			margin-bottom: 30px;
+		}
+		.author{
+			margin-bottom: 28px;
+			padding-top: 28px;
+			border-top: 1px solid #E5E5E5;
+
+		}
+		.tags{
+			margin-bottom: 28px;
+			padding-top: 28px;
+			border-top: 1px solid #E5E5E5;
+		}
+	}
+
+
+
+//ARTICLES: BODY CONTENT 
+	.article-content{
+		.title{
+			margin-top: -3px;
+			margin-bottom: 30px;
+			font-size: 28px;
+		}
+	}
+
+
+
+}
+//RECENT POSTS
+
+.sidebar{
+	float: right;
+	width: 25%;
+	ul{	margin:0 0 0 -40px;}
+
+	.recent-posts{
+		margin-bottom: 22px;
+		
+		label{
+			display: block;
+			margin-bottom: 22px;
+			font-size: 14px;
+			color: #222222;
+			cursor: auto;
+			line-height: 1.4;
+		}
+		ul{
+			li.posts{
+				margin: 14px 0;
+			
+					.title{
+						font-size: 14px;
+						color: #222222;
+						margin-bottom: 6px;
+						display: -moz-inline-stack;
+						display: inline-block;
+						vertical-align: middle;
+						zoom: 1;
+					}
+
+					.date{
+						display: block;
+						font-size: 12px;
+						color: #bbbbbb;
+					}
+				}
+			
+		}
+
+
+
+		.tags-list{
+
+			ul.tags{
+				margin-left: -40px;
+			}
+		}
+	}
+}
+
+
+
+
+
+
